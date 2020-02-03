@@ -1,0 +1,11 @@
+{
+  "pages": [
+    {
+      "url":"/",
+      "name": "top",
+      "title": "トップページ",
+      "description": "ディスクリプション(トップ)",
+      "contents": "html/contents/_index"
+    }
+  ]
+}

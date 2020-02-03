@@ -1,0 +1,25 @@
+{
+  "pages": [
+    {
+      "url":"/",
+      "name": "index",
+      "title": "トップページ",
+      "description": "ディスクリプション(トップ)",
+      "contents": "contents/_index"
+    },
+    {
+      "url":"/about",
+      "name": "index",
+      "title": "aboutページ",
+      "description": "ディスクリプション(about)",
+      "contents": "contents/about/_index"
+    },
+    {
+      "url":"/news",
+      "name": "index",
+      "title": "ニュースページ",
+      "description": "ディスクリプション(ニュースページ)",
+      "contents": "contents/news/_index"
+    }
+  ]
+}

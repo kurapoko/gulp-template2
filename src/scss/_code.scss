@@ -1,0 +1,33 @@
+// 便利なSCSS集
+/*
+$nameList : a,b,c;
+@each $name in $nameList {
+    &--#{$name} {
+        background: url(#{$img_path}/navi-#{$name}.png) center center no-repeat;
+        background-size: 100%;
+        @include sp {
+            background: url(#{$img_path}/sp/navi-#{$name}.png) center center no-repeat;
+            background-size: 100%;
+        }
+    }
+}
+*/
+
+/*
+$tmp: "";
+@for $i from 1 through 20 {
+    @if $i < 10 {
+        $tmp: "0#{$i}";
+    } @else {
+        $tmp: $i;
+    }
+
+    &--#{$tmp} {
+        background: url(#{$img_path}/character-name#{$tmp}.png) left top no-repeat;
+        @include sp {
+            background: url(#{$img_path}/sp/character-name#{$tmp}.png) left top no-repeat;
+            background-size: 100%;
+        }
+    }
+}
+*/

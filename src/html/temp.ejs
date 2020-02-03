@@ -1,0 +1,20 @@
+<%
+var d = jsonData;
+-%>
+<%- include('./include/_head') %>
+<%- include('./include/_header') %>
+<main class="main">
+  <section class="top">
+    <h1 class="top__title">title10</h1>
+  </section>
+  <!-- <a herf="" class="top_triangle">aaa</a> -->
+  <a herf="" class="top_arrow">aaa</a>
+  <div class="top__grid">
+    <div class="top__grid__item"></div>
+    <div class="top__grid__item"></div>
+    <div class="top__grid__item"></div>
+  </div>
+  <p><em class="marker"></em></p>
+  <%- include(d.contents) %>
+</main>
+  <%- include('./include/_footer') %>
