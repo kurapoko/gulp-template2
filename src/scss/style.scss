@@ -5,28 +5,31 @@
 // ********************************************************************************************
 @charset "utf-8";
 
-// config
+// Foundation
 // -------------------------------------------------------------------
-@import "config/reset";
-@import "config/variables";
-@import "config/mediaqueries";
-@import "config/base";
+@import "foundation/reset";
+@import "foundation/color";
+@import "foundation/variables";
+@import "foundation/mediaqueries";
+@import "foundation/base";
+@import "foundation/mixin";
+@import "foundation/font";
 
-// parts
+// Layout
 // -------------------------------------------------------------------
-@import "parts/mixin";
-@import "parts/extend";
+@import "layout/l-header";
+@import "layout/l-footer";
+@import "layout/l-common";
 
-// Component
+// object
 // -------------------------------------------------------------------
-@import "component/header";
-@import "component/footer";
 
+// object/component
+@import "object/component/c-button";
 
-// pages
-// -------------------------------------------------------------------
-@import "pages/top";
+// object/project
+@import "object/project/p-form";
 
-h1 {
-    display: flex;
-}
+// object/utility
+@import "object/utility/u-align";
+@import "object/utility/u-display";

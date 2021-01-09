@@ -4,19 +4,19 @@
 //
 // ********************************************************************************************
 
-
 // ********************　PC(と大きいタブレット)とSP(と小さいタブレット)を分ける場合(ブレイクポイントは1つ) ********************
 @mixin sp {
-	@media screen and (min-width:480px) and (max-width: 768px) {
-		@content;
-	}
+  @media screen and (max-width: 768px) {
+    @content;
+  }
 }
 @mixin pc {
-	@media screen and (min-width: 769px) {
-		@content;
-	}
+  @media screen and (min-width: 769px) {
+    @content;
+  }
 }
 // ********************　PC・タブレット・SPをそれぞれ分ける場合(ブレイクポイントは２つ) ********************
+
 /*
 @mixin sp {
 	@media screen and (min-width:480px) and (max-width: 767px) {

@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "gulp --env develop",
     "build": "gulp --env production",
-    "imagemin": "gulp imagemin"
+    "imagemin": "gulp imagemin",
+    "stylelint": "npx stylelint --fix ./src/scss/**/*.{css,scss,sass}",
+    "stylelint-check": "stylelint-config-prettier-check"
   },
   "repository": {
     "type": "git",
@@ -39,7 +41,17 @@
     "imagemin-gifsicle": "^6.0.1",
     "imagemin-jpeg-recompress": "^6.0.0",
     "imagemin-pngquant": "^7.0.0",
+    "imagemin-svgo": "^8.0.0",
     "minimist": "^1.2.0",
-    "require-dir": "^1.2.0"
+    "require-dir": "^1.2.0",
+    "prettier": "^2.2.1",
+    "prettier-stylelint": "^0.4.2",
+    "stylelint": "^13.8.0",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-recommended-scss": "^4.2.0",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-order": "^4.1.0",
+    "stylelint-prettier": "^1.1.2",
+    "stylelint-scss": "^3.18.0"
   }
 }

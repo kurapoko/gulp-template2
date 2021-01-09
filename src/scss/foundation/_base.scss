@@ -1,0 +1,52 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: $BASE_FONT_SIZE;
+}
+
+body {
+  color: $base-taxt-color;
+  font-family: $base-font-family;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  font-weight: $font-weight-regular;
+  letter-spacing: $base-letter-spacing;
+  line-height: $base-line-height;
+  -webkit-overflow-scrolling: touch;
+  text-size-adjust: 100%;
+  width: 100%;
+}
+
+a {
+  color: inherit;
+  font-size: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+button,
+input[type="submit"] {
+  appearance: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+ul,
+ol,
+li {
+  list-style-type: none;
+}
+
+em,
+address {
+  font-style: normal;
+}

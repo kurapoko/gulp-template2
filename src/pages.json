@@ -3,23 +3,20 @@
     {
       "url":"/",
       "name": "index",
-      "title": "トップページ",
-      "description": "ディスクリプション(トップ)",
-      "contents": "contents/_index"
-    },
-    {
-      "url":"/about",
-      "name": "index",
-      "title": "aboutページ",
-      "description": "ディスクリプション(about)",
-      "contents": "contents/about/_index"
+      "ogtype": "website",
+      "title": "トップ",
+      "description": "トップ",
+      "contents": "contents/_index",
+      "path": "./"
     },
     {
       "url":"/news",
-      "name": "index",
-      "title": "ニュースページ",
-      "description": "ディスクリプション(ニュースページ)",
-      "contents": "contents/news/_index"
+      "name": "news",
+      "ogtype": "",
+      "title": "ニュース",
+      "description": "ニュース",
+      "contents": "contents/news/_index",
+      "path": "../"
     }
   ]
 }

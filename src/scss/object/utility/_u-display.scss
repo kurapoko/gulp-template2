@@ -1,0 +1,17 @@
+.pc-view {
+    @include pc {
+        display: block !important;
+    }
+    @include sp {
+        display: none !important;
+    }
+}
+
+.sp-view {
+    @include pc {
+        display: none !important;
+    }
+    @include sp {
+        display: block !important;
+    }
+}

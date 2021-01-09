@@ -1,1 +1,56 @@
-news
+<% 
+d = jsonData;
+var list = [
+    {
+        category: '制作実績',
+        date: '2020-09-08',
+        text:'どれだけいいカメラを使って背景と光の加減を調整して撮影した<br class="pc-view">グラブの写真よりも実際に使用されるグラブの写真の方が圧倒的にかっこいい。<br class="pc-view">どれだけいいカメラを使って背景と光の加減を調整して撮影した。',
+        link: './detail.html'
+    },
+    {
+        category: 'BLOG',
+        date: '2020-09-08',
+        text:'どれだけいいカメラを使って背景と光の加減を調整して撮影した<br class="pc-view">グラブの写真よりも実際に使用されるグラブの写真の方が圧倒的にかっこいい。',
+        link: './detail.html'
+    },
+    {
+        category: 'STORY',
+        date: '2020-09-08',
+        text:'どれだけいいカメラを使って背景と光の加減を調整して撮影した<br class="pc-view">グラブの写真よりも実際に使用されるグラブの写真の方が圧倒的にかっこいい。',
+        link: './detail.html'
+    },
+    {
+        category: '制作実績',
+        date: '2020-09-08',
+        text:'どれだけいいカメラを使って背景と光の加減を調整して撮影した<br class="pc-view">グラブの写真よりも実際に使用されるグラブの写真の方が圧倒的にかっこいい。',
+        link: './detail.html'
+    },
+];
+-%>
+<section class="l-news-index news-index">
+    <h2 class="news-index__title">NEWS</h2>
+    <div class="p-news-cards">
+        <% for (var i = 0; i < list.length; i++) { %>
+            <article class="p-news-card">
+                <h3 class="c-color-label"><%- list[i].category -%></h3>
+                <time datetime="<%- list[i].date -%>" class="p-news-card__time"><%- list[i].date.replace(/-/g, '.') -%></time>
+                <p class="p-news-card__lead"><%- list[i].text -%></p>
+                <div class="p-news-card__link">
+                    <a href="<%- list[i].link -%>" class="c-button">MORE</a>
+                </div>
+            </article>
+        <% } %>
+    </div>
+    <nav class="l-news-index__pager c-pager">
+        <a href="#TODO" class="c-pager__arrow c-pager__arrow--prev">前のページ</a>
+        <ol class="c-pager__list">
+            <li class="c-pager__item"><a href="" class="c-pager__link c-pager__link--current">1</a></li>
+            <li class="c-pager__item"><a href="" class="c-pager__link">2</a></li>
+            <li class="c-pager__item"><a href="" class="c-pager__link">3</a></li>
+        </ol>
+        <a href="#TODO" class="c-pager__arrow c-pager__arrow--next">次のページ</a>
+    </nav>
+    <div class="l-bottom">
+    </div>
+</section>
+
