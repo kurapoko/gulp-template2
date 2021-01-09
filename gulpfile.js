@@ -8,12 +8,14 @@ const ejs = require('gulp-ejs');
 const fs = require('fs');
 const rename = require('gulp-rename');
 const prefix  = require('gulp-autoprefixer');
+const babel = require('gulp-babel');
 const plumber = require('gulp-plumber');
 const notify = require('gulp-notify');
 const imagemin = require('gulp-imagemin');
 const imageminJpg = require('imagemin-jpeg-recompress');
 const imageminPng = require('imagemin-pngquant');
 const imageminGif = require('imagemin-gifsicle');
+const imageminSvg = require('imagemin-svgo');
 const minimist = require('minimist');
 const gulpIf = require('gulp-if');
 const concat = require('gulp-concat');
@@ -65,7 +67,6 @@ gulp.task('sass', function (done) {
       )
     )
     .pipe(prefix({
-      browsers: ['last 2 version', 'iOS >= 8', 'Android >= 4.1'],
       cascade: false,
       grid: true
     }))
@@ -96,6 +97,7 @@ gulp.task('sass', function (done) {
 gulp.task('js', function(done) {
   gulp.src('./src/js/modules/**/*.js')
   .pipe(plumber())
+  .pipe(babel({presets: ['@babel/env']}))
   .pipe(concat('style.js'))
   .pipe(uglify())
   .pipe(
@@ -115,7 +117,6 @@ gulp.task('ejs', function (done) {
       temp = "src/html/temp.ejs";
       let i = 0;
 
-
     while (i < pages.length) {
       let name = pages[i].name,
           url = pages[i].url,
@@ -127,7 +128,7 @@ gulp.task('ejs', function (done) {
       .pipe(prettify({
         indent_size: 2,
         indent_with_tabs: true
-       }))
+      }))
       .pipe(rename(name + '.html'))
       .pipe(
         gulpIf(
@@ -159,7 +160,8 @@ gulp.task('imagemin', (done) => {
         interlaced: false,
         optimizationLevel: 3,
         colors:180
-    })
+    }),
+    imageminSvg()
   ]
   ))
   .pipe(

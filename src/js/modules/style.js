@@ -1,1 +1,3 @@
-console.log('aaa');
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('aaa');
+})
