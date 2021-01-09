@@ -11,8 +11,7 @@
     },
     {
       "url":"/news",
-      "name": "news",
-      "ogtype": "",
+      "name": "index",
       "title": "ニュース",
       "description": "ニュース",
       "contents": "contents/news/_index",

@@ -3,12 +3,16 @@
 <html lang="ja">
 <head>
 	<meta charset="UTF-8">
+	<% if (d.ogtype) { -%>
 	<meta property="og:type" content="<%- d.ogtype %>">
+	<% } else { -%>
+		<meta property="og:type" content="article">
+	<% } -%>
 	<title><%- d.title %>｜タイトル</title>
 	<meta property="og:title" content="<%- d.title %>タイトル">
 	<meta name="description" content="<%- d.description %>、｜ディスクリプション">
 	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:site" content="＠GRANSTAR_JAPAN">
+	<meta name="twitter:site" content="">
 	<link rel="stylesheet" href="<%- d.path %>css/style.css">
 	<%- include('./_svg') %>
 </head>

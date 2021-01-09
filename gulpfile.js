@@ -18,6 +18,7 @@ const minimist = require('minimist');
 const gulpIf = require('gulp-if');
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
+const prettify = require('gulp-prettify');
 const browserSync = require('browser-sync').create();
 
 const options = minimist(process.argv.slice(2), {
@@ -122,7 +123,11 @@ gulp.task('ejs', function (done) {
       gulp
       .src(temp)
       .pipe(plumber())
-      .pipe(ejs({jsonData: pages[i]}))
+      .pipe(ejs({jsonData: pages[i]},{rmWhitespace: true}))
+      .pipe(prettify({
+        indent_size: 2,
+        indent_with_tabs: true
+       }))
       .pipe(rename(name + '.html'))
       .pipe(
         gulpIf(
