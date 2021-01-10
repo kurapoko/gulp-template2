@@ -5,17 +5,16 @@
 }
 
 html {
-  font-size: $BASE_FONT_SIZE;
+  font-size: 62.5%;
 }
 
 body {
   color: $base-taxt-color;
-  font-family: $base-font-family;
+  font-family: $BASE_FONT_FAMILY;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
-  font-weight: $font-weight-regular;
-  letter-spacing: $base-letter-spacing;
-  line-height: $base-line-height;
+  letter-spacing: .5px;
+  line-height: 1.4t;
   -webkit-overflow-scrolling: touch;
   text-size-adjust: 100%;
   width: 100%;

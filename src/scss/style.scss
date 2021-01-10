@@ -17,19 +17,16 @@
 
 // Layout
 // -------------------------------------------------------------------
-@import "layout/l-header";
-@import "layout/l-footer";
-@import "layout/l-common";
+@import "layout/**";
 
 // object
 // -------------------------------------------------------------------
 
 // object/component
-@import "object/component/c-button";
+@import "object/component/**";
 
 // object/project
-@import "object/project/p-form";
+@import "object/project/**";
 
 // object/utility
-@import "object/utility/u-align";
-@import "object/utility/u-display";
+@import "object/utility/**";

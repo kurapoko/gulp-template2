@@ -4,6 +4,7 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
+const sassGlob = require('gulp-sass-glob');
 const ejs = require('gulp-ejs');
 const fs = require('fs');
 const rename = require('gulp-rename');
@@ -47,6 +48,7 @@ const imgDir = 'images';
 // SASSの設定
 gulp.task('sass', function (done) {
     gulp.src(['./src/scss/**/*.scss', '!./src/scss/**/_*.scss'])
+    .pipe(sassGlob())
     // エラーしても処理を止めない。エラーが発生した場合はデスクトップ通知を行う。
     .pipe(plumber({
       errorHandler: notify.onError("Error: <%= error.message %>")
@@ -98,7 +100,7 @@ gulp.task('js', function(done) {
   gulp.src('./src/js/modules/**/*.js')
   .pipe(plumber())
   .pipe(babel({presets: ['@babel/env']}))
-  .pipe(concat('style.js'))
+  .pipe(concat('script.js'))
   .pipe(uglify())
   .pipe(
     gulpIf(

@@ -16,6 +16,15 @@
       "description": "ニュース",
       "contents": "contents/news/_index",
       "path": "../"
+    },
+    {
+      "ritchResult": "FAQ",
+      "url":"/faq",
+      "name": "index",
+      "title": "FAQ",
+      "description": "FAQ",
+      "contents": "contents/faq/_index",
+      "path": "../"
     }
   ]
 }
