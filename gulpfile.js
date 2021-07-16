@@ -17,29 +17,13 @@ const imageminJpg = require('imagemin-jpeg-recompress');
 const imageminPng = require('imagemin-pngquant');
 const imageminGif = require('imagemin-gifsicle');
 const imageminSvg = require('imagemin-svgo');
-const minimist = require('minimist');
-const gulpIf = require('gulp-if');
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
 const prettify = require('gulp-prettify');
 const browserSync = require('browser-sync').create();
 
-const options = minimist(process.argv.slice(2), {
-	string: 'env',
-	default: {
-		env: 'develop'
-	}
-});
-
-// develop or production
-const env = options.env;
-
-// ビルドディレクトリ(本番とdev)
-const paths = {
-	develop: 'dev',
-	production: 'dist'
-}
 // アセットディレクトリ(状況に応じて書き換え)
+const path = 'dist';
 const Build = 'build';
 const Assets = 'assets';
 const imgDir = 'images';
@@ -54,44 +38,17 @@ gulp.task('sass', function (done) {
       errorHandler: notify.onError("Error: <%= error.message %>")
     }))
     // 開発環境でのみソースマップを作成
-    .pipe(
-      gulpIf(
-        env == 'develop',
-        sourcemaps.init()
-      )
-    )
+    .pipe(sourcemaps.init())
     // 本番環境でのみcssを最小化
-    .pipe(
-      gulpIf(
-        env == 'develop',
-        sass({ outputStyle: 'expanded' }),
-        sass({ outputStyle: 'compressed' })
-      )
-    )
+    .pipe(sass({ outputStyle: 'compressed' }))
     .pipe(prefix({
       cascade: false,
       grid: true
     }))
-    .pipe(
-      gulpIf(
-        env == 'develop',
-        sourcemaps.write('./')
-      )
-    )
-    .pipe(
-      gulpIf(
-        env == 'develop',
-        gulp.dest('./' + paths.develop + '/' + Assets + '/css/'),
-        gulp.dest('./' + paths.production + '/' + Assets + '/css/')
-      )
-    )
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest('./' + path + '/' + Assets + '/css/'))
     // CSSファイルのみリロードする
-    .pipe(
-      gulpIf(
-        env == 'develop',
-        browserSync.stream()
-      )
-    )
+    .pipe(browserSync.stream())
     done();
 });
 
@@ -102,13 +59,7 @@ gulp.task('js', function(done) {
   .pipe(babel({presets: ['@babel/env']}))
   .pipe(concat('script.js'))
   .pipe(uglify())
-  .pipe(
-    gulpIf(
-      env == 'develop',
-      gulp.dest('./' + paths.develop + '/' + Assets + '/js/'),
-      gulp.dest('./' + paths.production + '/' + Assets + '/js/')
-    )
-  )
+  .pipe(gulp.dest('./' + path + '/' + Assets + '/js/'))
   done();
 });
 
@@ -132,19 +83,8 @@ gulp.task('ejs', function (done) {
         indent_with_tabs: true
       }))
       .pipe(rename(name + '.html'))
-      .pipe(
-        gulpIf(
-          env == 'develop',
-          gulp.dest('./' + paths.develop + url),
-          gulp.dest('./' + paths.production  + url)
-        )
-      )
-      .pipe(
-        gulpIf(
-          env == 'develop',
-          browserSync.stream()
-        )
-      )
+      .pipe(gulp.dest('./' + path  + url))
+      .pipe(browserSync.stream())
 
       i++;
     }
@@ -154,7 +94,7 @@ gulp.task('ejs', function (done) {
 
 //画像圧縮(jpg|jpeg|png|gif)
 gulp.task('imagemin', (done) => {
-  gulp.src(['./src/images/**/*.{jpg,jpeg,png,gif}', '!./src/images/sprite/**/*.png'])
+  gulp.src(['./src/images/**/*.{jpg,jpeg,png,gif}'])
   .pipe(imagemin([
     imageminPng(),
     imageminJpg(),
@@ -166,13 +106,7 @@ gulp.task('imagemin', (done) => {
     imageminSvg()
   ]
   ))
-  .pipe(
-    gulpIf(
-      env == 'develop',
-      gulp.dest('./' + paths.develop + '/' + Assets + '/' + imgDir + '/'),
-      gulp.dest('./' + paths.production + '/' + Assets + '/' + imgDir + '/')
-    )
-  )
+  .pipe(gulp.dest('./' + path + '/' + Assets + '/' + imgDir + '/'))
   done();
 });
 
@@ -181,7 +115,7 @@ gulp.task('imagemin', (done) => {
 gulp.task('sync', () => {
   browserSync.init({
     server: {
-      baseDir: './' + paths.develop + '/',
+      baseDir: './' + path + '/',
       index: 'index.html'
     },
     open: 'external',
@@ -200,10 +134,4 @@ gulp.task('watch', () => {
   gulp.watch(['./' + Build + '/**/*.html'], gulp.task('reload'));
 });
 
-gulp.task('default', gulp.series(
-    gulpIf(
-      env == 'develop',
-      gulp.parallel('sass', 'ejs', 'sync', 'js', 'reload', 'watch', 'imagemin'),
-      gulp.parallel('sass', 'ejs', 'js', 'imagemin')
-    )
-));
+gulp.task('default', gulp.series(gulp.parallel('sass', 'ejs', 'sync', 'js', 'reload', 'watch')));
